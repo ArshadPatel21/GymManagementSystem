@@ -1,13 +1,7 @@
--- =========================================================
--- Gym Management System - Database Schema
--- =========================================================
 
 CREATE DATABASE IF NOT EXISTS gym_management_system;
 USE gym_management_system;
 
--- ---------------------------------------------------------
--- Table: memberships (plans)
--- ---------------------------------------------------------
 CREATE TABLE IF NOT EXISTS memberships (
     membership_id   INT AUTO_INCREMENT PRIMARY KEY,
     plan_name       VARCHAR(100) NOT NULL,
@@ -17,9 +11,6 @@ CREATE TABLE IF NOT EXISTS memberships (
     created_at      TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- ---------------------------------------------------------
--- Table: trainers
--- ---------------------------------------------------------
 CREATE TABLE IF NOT EXISTS trainers (
     trainer_id      INT AUTO_INCREMENT PRIMARY KEY,
     name            VARCHAR(100) NOT NULL,
@@ -31,9 +22,6 @@ CREATE TABLE IF NOT EXISTS trainers (
     created_at      TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- ---------------------------------------------------------
--- Table: members
--- ---------------------------------------------------------
 CREATE TABLE IF NOT EXISTS members (
     member_id       INT AUTO_INCREMENT PRIMARY KEY,
     name            VARCHAR(100) NOT NULL,
@@ -51,9 +39,6 @@ CREATE TABLE IF NOT EXISTS members (
     FOREIGN KEY (trainer_id) REFERENCES trainers(trainer_id) ON DELETE SET NULL
 );
 
--- ---------------------------------------------------------
--- Table: attendance
--- ---------------------------------------------------------
 CREATE TABLE IF NOT EXISTS attendance (
     attendance_id   INT AUTO_INCREMENT PRIMARY KEY,
     member_id       INT NOT NULL,
@@ -63,9 +48,6 @@ CREATE TABLE IF NOT EXISTS attendance (
     FOREIGN KEY (member_id) REFERENCES members(member_id) ON DELETE CASCADE
 );
 
--- ---------------------------------------------------------
--- Table: payments
--- ---------------------------------------------------------
 CREATE TABLE IF NOT EXISTS payments (
     payment_id      INT AUTO_INCREMENT PRIMARY KEY,
     member_id       INT NOT NULL,
@@ -76,9 +58,6 @@ CREATE TABLE IF NOT EXISTS payments (
     FOREIGN KEY (member_id) REFERENCES members(member_id) ON DELETE CASCADE
 );
 
--- ---------------------------------------------------------
--- Sample seed data (optional)
--- ---------------------------------------------------------
 INSERT INTO memberships (plan_name, duration_months, price, description) VALUES
 ('Monthly Basic', 1, 1000.00, 'Access to gym equipment only'),
 ('Quarterly Standard', 3, 2700.00, 'Gym access + group classes'),
