@@ -1,11 +1,7 @@
-// =========================================================
-// Attendance Routes - Track member gym check-ins
-// =========================================================
 const express = require('express');
 const router = express.Router();
 const db = require('../config/db');
 
-// GET all attendance records (joined with member name)
 router.get('/', async (req, res) => {
     try {
         const [rows] = await db.query(`
@@ -20,7 +16,6 @@ router.get('/', async (req, res) => {
     }
 });
 
-// GET attendance for a specific member
 router.get('/member/:memberId', async (req, res) => {
     try {
         const [rows] = await db.query(
@@ -33,7 +28,6 @@ router.get('/member/:memberId', async (req, res) => {
     }
 });
 
-// CREATE (mark) attendance
 router.post('/', async (req, res) => {
     try {
         const { member_id, date, check_in_time, status } = req.body;
@@ -72,7 +66,6 @@ router.put('/:id', async (req, res) => {
     }
 });
 
-// DELETE attendance record
 router.delete('/:id', async (req, res) => {
     try {
         const [result] = await db.query('DELETE FROM attendance WHERE attendance_id = ?', [req.params.id]);
