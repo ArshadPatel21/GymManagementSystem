@@ -1,11 +1,7 @@
-// =========================================================
-// Member Routes - CRUD operations for gym members
-// =========================================================
 const express = require('express');
 const router = express.Router();
 const db = require('../config/db');
 
-// GET all members (with membership plan + trainer name joined)
 router.get('/', async (req, res) => {
     try {
         const [rows] = await db.query(`
@@ -21,7 +17,6 @@ router.get('/', async (req, res) => {
     }
 });
 
-// GET single member by ID
 router.get('/:id', async (req, res) => {
     try {
         const [rows] = await db.query('SELECT * FROM members WHERE member_id = ?', [req.params.id]);
@@ -34,7 +29,6 @@ router.get('/:id', async (req, res) => {
     }
 });
 
-// CREATE a new member
 router.post('/', async (req, res) => {
     try {
         const { name, email, phone, address, gender, dob, membership_id, trainer_id, status } = req.body;
@@ -55,7 +49,6 @@ router.post('/', async (req, res) => {
     }
 });
 
-// UPDATE an existing member
 router.put('/:id', async (req, res) => {
     try {
         const { name, email, phone, address, gender, dob, membership_id, trainer_id, status } = req.body;
@@ -75,7 +68,6 @@ router.put('/:id', async (req, res) => {
     }
 });
 
-// DELETE a member
 router.delete('/:id', async (req, res) => {
     try {
         const [result] = await db.query('DELETE FROM members WHERE member_id = ?', [req.params.id]);
