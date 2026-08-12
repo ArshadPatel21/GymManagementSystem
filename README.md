@@ -121,7 +121,7 @@ Edit `.env`:
 PORT=5000
 DB_HOST=localhost
 DB_USER=root
-DB_PASSWORD=your_mysql_password
+DB_PASSWORD=""
 DB_NAME=gym_management_system
 DB_PORT=3306
 ```
@@ -166,7 +166,7 @@ Import the routes into [Postman](https://www.postman.com/) to test the API indep
 
 ## 👥 Team
 
-- **Team Size:** [add your team size]
+- **Team Size:** 2
 - **My Contributions:** Requirement analysis, database design, frontend development, backend integration, testing, and debugging
 
 ## ✅ Key Outcome
