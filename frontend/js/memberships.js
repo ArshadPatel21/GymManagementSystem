@@ -1,6 +1,3 @@
-// =========================================================
-// Membership Plans Page Logic
-// =========================================================
 async function loadPlans() {
     try {
         const { data } = await api.getMemberships();
