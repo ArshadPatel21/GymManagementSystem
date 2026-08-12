@@ -1,11 +1,7 @@
-// =========================================================
-// Trainer Routes - CRUD operations for gym trainers
-// =========================================================
 const express = require('express');
 const router = express.Router();
 const db = require('../config/db');
 
-// GET all trainers
 router.get('/', async (req, res) => {
     try {
         const [rows] = await db.query('SELECT * FROM trainers ORDER BY trainer_id DESC');
@@ -15,7 +11,6 @@ router.get('/', async (req, res) => {
     }
 });
 
-// GET single trainer
 router.get('/:id', async (req, res) => {
     try {
         const [rows] = await db.query('SELECT * FROM trainers WHERE trainer_id = ?', [req.params.id]);
@@ -28,7 +23,6 @@ router.get('/:id', async (req, res) => {
     }
 });
 
-// CREATE a new trainer
 router.post('/', async (req, res) => {
     try {
         const { name, email, phone, specialization, salary, joining_date } = req.body;
@@ -49,7 +43,6 @@ router.post('/', async (req, res) => {
     }
 });
 
-// UPDATE a trainer
 router.put('/:id', async (req, res) => {
     try {
         const { name, email, phone, specialization, salary, joining_date } = req.body;
@@ -69,7 +62,6 @@ router.put('/:id', async (req, res) => {
     }
 });
 
-// DELETE a trainer
 router.delete('/:id', async (req, res) => {
     try {
         const [result] = await db.query('DELETE FROM trainers WHERE trainer_id = ?', [req.params.id]);
