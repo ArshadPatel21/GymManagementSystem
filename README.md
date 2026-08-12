@@ -3,7 +3,7 @@
 An academic web development project built to digitize and simplify gym operations — member registration, membership plan management, trainer management, attendance tracking, and fee/payment records — through a centralized web-based system.
 
 **Duration:** Aug 2025 – Nov 2025
-**Category:** Web Development (Academic Project)
+**Category:** Web Development
 
 ## 📌 Overview
 
@@ -167,7 +167,7 @@ Import the routes into [Postman](https://www.postman.com/) to test the API indep
 ## 👥 Team
 
 - **Team Size:** 2
-- **My Contributions:** Requirement analysis, database design, frontend development, backend integration, testing, and debugging
+- **My Contributions:** Requirement analysis, database design, frontend development, backend integration, and debugging
 
 ## ✅ Key Outcome
 
