@@ -1,6 +1,3 @@
-// =========================================================
-// Dashboard Page Logic
-// =========================================================
 async function loadDashboard() {
     try {
         const [membersRes, trainersRes, membershipsRes, paymentsRes] = await Promise.all([
@@ -29,7 +26,7 @@ async function loadDashboard() {
             .reduce((sum, p) => sum + Number(p.amount), 0);
         document.getElementById('statPayments').textContent = `₹${monthTotal.toFixed(2)}`;
 
-        // Recent members table (latest 5)
+        // Recent members table
         const tbody = document.getElementById('recentMembersTable');
         const recent = members.slice(0, 5);
 
