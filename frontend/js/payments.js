@@ -1,6 +1,3 @@
-// =========================================================
-// Payments Page Logic
-// =========================================================
 async function loadPayments() {
     try {
         const { data } = await api.getPayments();
