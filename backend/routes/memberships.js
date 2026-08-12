@@ -1,11 +1,7 @@
-// =========================================================
-// Membership Plan Routes - CRUD operations
-// =========================================================
 const express = require('express');
 const router = express.Router();
 const db = require('../config/db');
 
-// GET all membership plans
 router.get('/', async (req, res) => {
     try {
         const [rows] = await db.query('SELECT * FROM memberships ORDER BY membership_id DESC');
@@ -15,7 +11,6 @@ router.get('/', async (req, res) => {
     }
 });
 
-// GET single plan
 router.get('/:id', async (req, res) => {
     try {
         const [rows] = await db.query('SELECT * FROM memberships WHERE membership_id = ?', [req.params.id]);
@@ -28,7 +23,6 @@ router.get('/:id', async (req, res) => {
     }
 });
 
-// CREATE a new plan
 router.post('/', async (req, res) => {
     try {
         const { plan_name, duration_months, price, description } = req.body;
@@ -48,7 +42,6 @@ router.post('/', async (req, res) => {
     }
 });
 
-// UPDATE a plan
 router.put('/:id', async (req, res) => {
     try {
         const { plan_name, duration_months, price, description } = req.body;
@@ -67,7 +60,6 @@ router.put('/:id', async (req, res) => {
     }
 });
 
-// DELETE a plan
 router.delete('/:id', async (req, res) => {
     try {
         const [result] = await db.query('DELETE FROM memberships WHERE membership_id = ?', [req.params.id]);
