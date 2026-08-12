@@ -1,6 +1,3 @@
-// =========================================================
-// Trainers Page Logic
-// =========================================================
 async function loadTrainers() {
     try {
         const { data } = await api.getTrainers();
