@@ -1,6 +1,4 @@
-// =========================================================
-// Attendance Page Logic
-// =========================================================
+
 let membersForAttendance = [];
 
 async function loadAttendance() {
