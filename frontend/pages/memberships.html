@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Membership Plans | Gym Management System</title>
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<div class="app-container">
+    <aside class="sidebar">
+        <div class="logo">🏋️ FlexGym</div>
+        <nav>
+            <a href="../index.html">📊 Dashboard</a>
+            <a href="members.html">👥 Members</a>
+            <a href="trainers.html">🧑‍🏫 Trainers</a>
+            <a href="memberships.html" class="active">🪪 Membership Plans</a>
+            <a href="attendance.html">✅ Attendance</a>
+            <a href="payments.html">💳 Payments</a>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+        <div class="topbar">
+            <h1>Membership Plans</h1>
+            <button class="btn btn-primary" onclick="openPlanModal()">+ Add Plan</button>
+        </div>
+
+        <div class="card">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Plan Name</th>
+                        <th>Duration (months)</th>
+                        <th>Price</th>
+                        <th>Description</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="plansTable">
+                    <tr><td colspan="5" class="empty-state">Loading...</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+</div>
+
+<!-- Add/Edit Plan Modal -->
+<div class="modal-overlay" id="planModal">
+    <div class="modal">
+        <h2 id="planModalTitle">Add Membership Plan</h2>
+        <form id="planForm">
+            <input type="hidden" id="planId">
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>Plan Name *</label>
+                    <input type="text" id="planName" required>
+                </div>
+                <div class="form-group">
+                    <label>Duration (months) *</label>
+                    <input type="number" id="planDuration" min="1" required>
+                </div>
+                <div class="form-group">
+                    <label>Price *</label>
+                    <input type="number" id="planPrice" step="0.01" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Description</label>
+                <textarea id="planDescription" rows="2"></textarea>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="closePlanModal()">Cancel</button>
+                <button type="submit" class="btn btn-primary">Save Plan</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="../js/api.js"></script>
+<script src="../js/memberships.js"></script>
+</body>
+</html>
