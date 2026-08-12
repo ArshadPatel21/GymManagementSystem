@@ -1,6 +1,3 @@
-// =========================================================
-// Database Connection Configuration (MySQL using mysql2)
-// =========================================================
 const mysql = require('mysql2');
 require('dotenv').config();
 
@@ -15,16 +12,14 @@ const pool = mysql.createPool({
     queueLimit: 0
 });
 
-// Use the promise-based wrapper for async/await support
 const db = pool.promise();
 
-// Quick connectivity check on startup
 pool.getConnection((err, connection) => {
     if (err) {
-        console.error('❌ Database connection failed:', err.message);
+        console.error('Database connection failed:', err.message);
         return;
     }
-    console.log('✅ Connected to MySQL database:', process.env.DB_NAME || 'gym_management_system');
+    console.log('Connected to MySQL database:', process.env.DB_NAME || 'gym_management_system');
     connection.release();
 });
 
