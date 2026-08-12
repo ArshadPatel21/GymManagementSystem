@@ -1,11 +1,7 @@
-// =========================================================
-// Payment Routes - Track member fee payments
-// =========================================================
 const express = require('express');
 const router = express.Router();
 const db = require('../config/db');
 
-// GET all payments (joined with member name)
 router.get('/', async (req, res) => {
     try {
         const [rows] = await db.query(`
@@ -20,7 +16,6 @@ router.get('/', async (req, res) => {
     }
 });
 
-// GET payments for a specific member
 router.get('/member/:memberId', async (req, res) => {
     try {
         const [rows] = await db.query(
@@ -33,7 +28,6 @@ router.get('/member/:memberId', async (req, res) => {
     }
 });
 
-// CREATE a new payment record
 router.post('/', async (req, res) => {
     try {
         const { member_id, amount, payment_date, payment_method, status } = req.body;
@@ -54,7 +48,6 @@ router.post('/', async (req, res) => {
     }
 });
 
-// UPDATE a payment record
 router.put('/:id', async (req, res) => {
     try {
         const { amount, payment_date, payment_method, status } = req.body;
@@ -73,7 +66,6 @@ router.put('/:id', async (req, res) => {
     }
 });
 
-// DELETE a payment record
 router.delete('/:id', async (req, res) => {
     try {
         const [result] = await db.query('DELETE FROM payments WHERE payment_id = ?', [req.params.id]);
